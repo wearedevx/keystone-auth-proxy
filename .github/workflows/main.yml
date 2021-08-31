@@ -5,17 +5,23 @@ on:
     branches:
       - main
 
-env:
-  PROJECT_ID: ${{ secrets.GCP_PROJECT }}
-  REGION: ${{ secrets.GCP_REGION }}
-  API_DOMAIN: ${{ secrets.API_DOMAIN }}
-
 jobs:
   deploy_function:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Load Secrets
+        uses: wearedevx/keystone-action
+        id: load_secrets
+        with:
+          keystone_slot_1: ${{ secrets.KEYSTONE_PROD_SLOT_1 }}
+          keystone_slot_2: ${{ secrets.KEYSTONE_PROD_SLOT_2 }}
+          keystone_slot_3: ${{ secrets.KEYSTONE_PROD_SLOT_3 }}
+          keystone_slot_4: ${{ secrets.KEYSTONE_PROD_SLOT_4 }}
+          keystone_slot_5: ${{ secrets.KEYSTONE_PROD_SLOT_5 }}
+
 
       - name: Deploy
         id: deploy
@@ -27,4 +33,4 @@ jobs:
           env_vars: API_DOMAIN=${{ env.API_DOMAIN }}
           project_id: ${{ env.PROJECT_ID }}
           region: ${{ env.REGION }}
-          credentials: ${{ secrets.GCP_SA_KEY }}
+          credentials: ${{ env.GCP_SA_KEY }}

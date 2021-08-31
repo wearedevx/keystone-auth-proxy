@@ -1,0 +1,22 @@
+project_id: 59e79a83-56db-4e31-940d-b3e54a7c344d
+name: keystone-auth-proxy
+env:
+- key: PORT
+  strict: true
+- key: API_DOMAIN
+  strict: true
+- key: GCP_PROJECT
+  strict: true
+- key: GCP_REGION
+  strict: true
+- key: GCP_SA_KEY
+  strict: true
+files: []
+options:
+  strict: false
+ci_services:
+- name: Github-Actions
+  type: github-ci
+  options:
+    Owner: wearedevx
+    Project: keystone-auth-proxy
