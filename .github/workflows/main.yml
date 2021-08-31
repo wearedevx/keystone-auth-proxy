@@ -30,6 +30,6 @@ jobs:
           runtime: nodejs14
           entry_point: redirect
           env_vars: API_DOMAIN=${{ env.API_DOMAIN }}
-          project_id: ${{ env.PROJECT_ID }}
-          region: ${{ env.REGION }}
+          project_id: ${{ env.GCP_PROJECT }}
+          region: ${{ env.GCP_REGION }}
           credentials: ${{ env.GCP_SA_KEY }}
