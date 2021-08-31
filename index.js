@@ -3,7 +3,13 @@ const url = require("url");
 
 const { URL } = url;
 
-const BASE_URL = "keystone-server-esk4nrfqlq-oa.a.run.app"
+const API_DOMAIN = process.env.API_DOMAIN
+
+if (API_DOMAIN === "") {
+  console.error("API_DOMAIN cannot be empty");
+  process.exit(1);
+}
+
 /**
  * Responds to any HTTP request.
  *
@@ -55,7 +61,7 @@ exports.redirect = async (req, res) => {
 function buildUrl(version, state, code) {
   let v = formatVersion(version)
 
-  const u = new URL(`https://${v}---${BASE_URL}/auth-redirect/`);
+  const u = new URL(`https://${v}---${API_DOMAIN}/auth-redirect/`);
   u.searchParams.set('state', state);
   u.searchParams.set('code', code);
 

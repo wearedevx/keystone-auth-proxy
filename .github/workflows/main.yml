@@ -8,6 +8,7 @@ on:
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT }}
   REGION: ${{ secrets.GCP_REGION }}
+  API_DOMAIN: ${{ secrets.API_DOMAIN }}
 
 jobs:
   deploy_function:
@@ -23,6 +24,7 @@ jobs:
           name: auth-proxy
           runtime: nodejs14
           entry_point: redirect
+          env_vars: API_DOMAIN:${{ env.API_DOMAIN }}
           project_id: ${{ env.PROJECT_ID }}
           region: ${{ env.REGION }}
           credentials: ${{ secrets.GCP_SA_KEY }}
