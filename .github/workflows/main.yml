@@ -3,7 +3,7 @@ name: Keystone Server Deployment
 on:
   push:
     branches:
-      - master
+      - main
 
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT }}
