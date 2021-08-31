@@ -7,7 +7,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "npx functions-framework --target=redirect --signature-type=http"
+    "start": "npx functions-framework --target=redirect --signature-type=http --port=$PORT"
   },
   "devDependencies": {
     "@google-cloud/functions-framework": "^1.9.0"
