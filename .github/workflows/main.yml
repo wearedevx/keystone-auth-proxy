@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Load Secrets
-        uses: wearedevx/keystone-action
+        uses: wearedevx/keystone-action@main
         id: load_secrets
         with:
           keystone_slot_1: ${{ secrets.KEYSTONE_PROD_SLOT_1 }}
@@ -21,7 +21,6 @@ jobs:
           keystone_slot_3: ${{ secrets.KEYSTONE_PROD_SLOT_3 }}
           keystone_slot_4: ${{ secrets.KEYSTONE_PROD_SLOT_4 }}
           keystone_slot_5: ${{ secrets.KEYSTONE_PROD_SLOT_5 }}
-
 
       - name: Deploy
         id: deploy
