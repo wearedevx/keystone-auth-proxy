@@ -1,0 +1,9 @@
+{
+  "name": "keystone-auth-proxy",
+  "version": "1.0.0",
+  "description": "OAuth redirect proxy for Keystone",
+  "main": "index.js",
+  "author": "dexv-opensource",
+  "license": "MIT",
+  "private": true,
+}

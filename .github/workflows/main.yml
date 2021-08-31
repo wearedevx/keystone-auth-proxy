@@ -1,0 +1,28 @@
+name: Keystone Server Deployment
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  PROJECT_ID: ${{ secrets.GCP_PROJECT }}
+  REGION: ${{ secrets.GCP_REGION }}
+
+jobs:
+  deploy_function:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Deploy
+        id: deploy
+        uses: google-github-actions/deploy-cloud-functions@main
+        with:
+          name: auth-proxy
+          runtime: nodejs14
+          entry_point: redirect
+          project_id: ${{ env.PROJECT_ID }}
+          region: ${{ env.REGION }}
+          credentials: ${{ secrets.GCP_SA_KEY }}
