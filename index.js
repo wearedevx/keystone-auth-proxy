@@ -48,7 +48,7 @@ exports.redirect = async (req, res) => {
     let body = '';
     response
       .on('data', (chunk) => body += chunk)
-      .on('ed', () => {
+      .on('end', () => {
         if (body.length > 0) {
           res.setHeader('content-length', body.length);
         }
